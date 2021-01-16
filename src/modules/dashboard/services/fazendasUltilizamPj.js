@@ -28,7 +28,7 @@ export default {
     });
 
     series.push({
-      color: "#00FA00",
+      color: "#556B2F",
       name: "",
       data
     });

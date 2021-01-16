@@ -72,6 +72,13 @@ export default {
         cor: "green",
         permission: [5001, 5003, 5004, 6002]
       },
+      {
+        icon: "mdi-chart-areaspline",
+        text: "Operacao",
+        to: "/operacao-moderacao",
+        cor: "primary",
+        permission: [5001, 5003, 5004, 6002]
+      },
 
       {
         icon: "mdi-chevron-up",
