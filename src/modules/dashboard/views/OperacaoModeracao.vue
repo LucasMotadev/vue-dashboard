@@ -1,15 +1,19 @@
 <template>
   <v-container grid-list-xs>
-    <v-card>
-      <v-card-title primary-title>
-        Moderação e Operação
-      </v-card-title>
-    </v-card>
+    <v-card-title primary-title>
+      Moderação e Operação
+    </v-card-title>
+
+    <SectionEmpresaModeracao />
   </v-container>
 </template>
 
 <script>
-export default {};
+export default {
+  components: {
+    SectionEmpresaModeracao: () => import("../section/SectionEmpresaModeracao")
+  }
+};
 </script>
 
 <style></style>
