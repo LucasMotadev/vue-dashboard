@@ -4,7 +4,7 @@ export default {
       uf: "MT",
       empresa: "Dos porcos LTDA-1",
       protietario: "Jose dos porcos",
-      faturamento_mes: 1000
+      faturamento_mes: 500
     },
     {
       uf: "MT",
@@ -16,7 +16,7 @@ export default {
       uf: "SP",
       empresa: "Dos porcos LTDA",
       protietario: "Jose dos porcos",
-      faturamento_mes: 1000
+      faturamento_mes: 600
     },
     {
       uf: "SP",
@@ -64,7 +64,7 @@ export default {
       uf: "MT",
       empresa: "Dos porcos LTDA",
       protietario: "Jose dos porcos",
-      faturamento_mes: 1000
+      faturamento_mes: 700
     },
     {
       uf: "SP",
@@ -76,7 +76,7 @@ export default {
       uf: "SP",
       empresa: "Dos porcos LTDA",
       protietario: "Jose dos porcos",
-      faturamento_mes: 1000
+      faturamento_mes: 350
     }
   ],
 

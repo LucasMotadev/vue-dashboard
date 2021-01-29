@@ -6,7 +6,7 @@ export default [
   {
     name: "home",
     path: "/",
-    component: () => import("@/layouts/painel/Index"),
+    component: () => import("@/layouts/Tabs/Index"),
     children: [...dashboard]
   }
   // {

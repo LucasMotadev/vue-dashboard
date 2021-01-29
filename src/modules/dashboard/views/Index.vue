@@ -1,9 +1,5 @@
 <template>
   <v-container grid-list-xs>
-    <v-icon>mdi mdi-line-chart</v-icon>
-    <v-card-title primary-title>
-      {{ title }}
-    </v-card-title>
     <SectionFazPorEstado />
     <SectionEmpresaPorMunicipio />
     <section-cards-fazendas />

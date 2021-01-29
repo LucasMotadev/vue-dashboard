@@ -1,11 +1,13 @@
 <template>
   <v-container>
     <v-card>
+      <v-card-title primary-title>
+        Title
+      </v-card-title>
       <v-data-table
         :headers="headers"
         :items="items"
-        hide-actions
-        items-per-page="5"
+        :items-per-page="5"
         class="elevation-1"
       >
         <template v-slot:[`item.action`]="{ item }">
@@ -13,7 +15,7 @@
             <template v-slot:activator="{ on, attrs }">
               <v-btn
                 @click="edit(item)"
-                outline
+                outlined
                 icon
                 color="warning"
                 dark
@@ -77,7 +79,8 @@ export default {
         },
         {
           text: "Ações",
-          value: "action"
+          value: "action",
+          align: "end"
         }
       ]
     };

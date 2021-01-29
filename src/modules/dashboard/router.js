@@ -8,5 +8,10 @@ export default [
     name: "operacao-moderacao",
     path: "operacao-moderacao",
     component: () => import("./views/OperacaoModeracao.vue")
+  },
+  {
+    name: "Maps",
+    path: "Maps",
+    component: () => import("./views/Maps")
   }
 ];
