@@ -1,14 +1,13 @@
 <template>
   <v-container>
     <v-card>
-      <v-card-title primary-title>
-        Title
-      </v-card-title>
+      <v-card-title primary-title> Moderação </v-card-title>
       <v-data-table
         :headers="headers"
         :items="items"
         :items-per-page="5"
         class="elevation-1"
+        @click:row="fetch($event)"
       >
         <template v-slot:[`item.action`]="{ item }">
           <v-tooltip top>
@@ -34,36 +33,12 @@
 </template>
 
 <script>
+import { barramento } from "../barramento";
+import sericeTableEmpresaModeracao from "../services/tableEmpresaModeracao";
 export default {
   data() {
     return {
-      items: [
-        {
-          empresa: "Porquinhos li",
-          operacao: "Nao consta",
-          moderacao: "consta"
-        },
-        {
-          empresa: "Porquinhos li",
-          operacao: "Nao consta",
-          moderacao: "consta"
-        },
-        {
-          empresa: "Porquinhos li",
-          operacao: "Nao consta",
-          moderacao: "consta"
-        },
-        {
-          empresa: "Porquinhos li",
-          operacao: "Nao consta",
-          moderacao: "consta"
-        },
-        {
-          empresa: "Porquinhos li",
-          operacao: "Nao consta",
-          moderacao: "consta"
-        }
-      ],
+      items: [],
       headers: [
         {
           text: "Empresa",
@@ -84,6 +59,19 @@ export default {
         }
       ]
     };
+  },
+
+  methods: {
+    fetch(item) {
+      barramento.$emit("click:rowTableEmpresaModeracao", item);
+    },
+
+    getEmpresaModeracao() {
+      this.items = sericeTableEmpresaModeracao.get();
+    }
+  },
+  created() {
+    this.getEmpresaModeracao();
   }
 };
 </script>

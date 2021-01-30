@@ -31,56 +31,43 @@
 </template>
 
 <script>
+import { barramento } from "../barramento";
+import serviceFazendoModeracao from "../services/tableFazendoModeracao";
 export default {
   data() {
     return {
-      items: [
-        {
-          empresa: "Porquinhos li",
-          operacao: "Nao consta",
-          moderacao: "consta"
-        },
-        {
-          empresa: "Porquinhos li",
-          operacao: "Nao consta",
-          moderacao: "consta"
-        },
-        {
-          empresa: "Porquinhos li",
-          operacao: "Nao consta",
-          moderacao: "consta"
-        },
-        {
-          empresa: "Porquinhos li",
-          operacao: "Nao consta",
-          moderacao: "consta"
-        },
-        {
-          empresa: "Porquinhos li",
-          operacao: "Nao consta",
-          moderacao: "consta"
-        }
-      ],
+      items: [],
       headers: [
         {
           text: "Empresa",
           value: "empresa"
         },
         {
-          text: "Operação",
-          value: "operacao"
+          text: "Valor Min",
+          value: "qt_min"
         },
         {
-          text: "Moderação",
-          value: "moderacao"
+          text: "Valor Max",
+          value: "qt_max"
         },
         {
           text: "Ações",
           value: "action",
-          align: 'end'
+          align: "end"
         }
       ]
     };
+  },
+  methods: {
+    async getFazendas(e = {}) {
+      console.log("clicou", e.id_empresa);
+      this.items = await serviceFazendoModeracao.get(e.id_empresa);
+    }
+  },
+
+  created() {
+    this.getFazendas();
+    barramento.$on("click:rowTableEmpresaModeracao", this.getFazendas);
   }
 };
 </script>
