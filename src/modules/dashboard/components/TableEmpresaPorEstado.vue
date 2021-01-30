@@ -5,10 +5,11 @@
     class="elevation-0"
     :items-per-page="5"
   >
-  <template v-slot:[`item.status`]="{item}">
-    <v-icon :color="status(item.faturamento_mes).color">{{status(item.faturamento_mes).icon}}</v-icon>
-    
-  </template>
+    <template v-slot:[`item.status`]="{ item }">
+      <v-icon :color="status(item.faturamento_mes).color">{{
+        status(item.faturamento_mes).icon
+      }}</v-icon>
+    </template>
   </v-data-table>
 </template>
 
@@ -37,8 +38,8 @@ export default {
           value: "faturamento_mes"
         },
         {
-          text:"status",
-          value:"status"
+          text: "status",
+          value: "status"
         }
       ],
       items: []
@@ -47,29 +48,26 @@ export default {
   computed: {
     ...mapGetters({
       getUf: "dashboard/getUf"
-    }),
-
+    })
   },
   methods: {
-    status(value){
-      if(value > 800){
-        return{
-          icon: 'mdi mdi-arrow-up',
+    status(value) {
+      if (value > 800) {
+        return {
+          icon: "mdi mdi-arrow-up",
           color: "success"
-
-        } 
+        };
       }
       return {
-       icon: 'mdi mdi-arrow-down',
-       color: "error"
-      }
-  
+        icon: "mdi mdi-arrow-down",
+        color: "error"
+      };
     },
     getEmpresaPorEstado(obj = {}) {
       this.items = tableEmpresaService.getEmpresaPorEstado(obj.id);
     },
     onClickSeriesEmpresaPorEstado() {
-      barramento.$on("clinkSeriresPorEstado", this.getEmpresaPorEstado);
+      barramento.$on("click:seriresPorEstado", this.getEmpresaPorEstado);
     }
   },
   mounted() {

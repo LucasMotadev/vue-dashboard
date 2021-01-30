@@ -24,7 +24,7 @@ export default {
           id: "EmpresaPorEstado",
           events: {
             click: (event, chartContext, config) => {
-              barramento.$emit("clinkSeriresPorEstado", {
+              barramento.$emit("click:seriresPorEstado", {
                 id: this.series[config.seriesIndex].name,
                 color: config.globals.fill.colors[config.seriesIndex]
               });
@@ -96,9 +96,8 @@ export default {
           series,
           categories
         } = await empresasPorEstadoService.getEmpresaPorEstadoAll();
-
         this.series = series;
-        this.options.xaxis.categories = categories;
+        this.$set(this.options.xaxis.categories, categories);
       } catch (error) {
         console.log(error);
       }

@@ -18,7 +18,7 @@ export default {
     }
   ],
 
-  getFazendaPj() {
+  getFazendaPj(e) {
     let data = [];
     let categories = [];
     let series = [];
@@ -28,7 +28,7 @@ export default {
     });
 
     series.push({
-      color: "#556B2F",
+      color: e.color,
       name: "",
       data
     });

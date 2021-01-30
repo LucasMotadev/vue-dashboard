@@ -2,7 +2,7 @@
   <apexcharts
     type="bar"
     ref="fazendaScor"
-    :options="options"
+    :options="chartOpiton"
     :series="series"
   ></apexcharts>
 </template>
@@ -10,15 +10,24 @@
 <script>
 import serviceFazedaScor from "../services/fazendaScor";
 import apexcharts from "vue-apexcharts";
+import { barramento } from "../barramento";
 export default {
   components: {
     apexcharts
   },
-  data: () => {
+  data() {
     return {
       options: {
         chart: {
-          id: "fazenda-scor"
+          id: "fazenda-scor",
+          events: {
+            click: (event, chartContext, config) => {
+              barramento.$emit("click:seriesFazendaScor", {
+                id: this.series[config.seriesIndex]?.name,
+                color: config.globals.fill.colors[config.seriesIndex]
+              });
+            }
+          }
         },
         title: {
           text: "Fazenda Scor"
@@ -71,7 +80,6 @@ export default {
     getFazendaScor() {
       try {
         let { series, categories } = serviceFazedaScor.getFazendaScor();
-
         this.series = series;
         this.options.xaxis.categories = categories;
       } catch (error) {

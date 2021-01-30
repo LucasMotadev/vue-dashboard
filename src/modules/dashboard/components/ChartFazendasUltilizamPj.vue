@@ -10,11 +10,12 @@
 <script>
 import serviceFazendasUltilizamPj from "../services/fazendasUltilizamPj";
 import apexcharts from "vue-apexcharts";
+import { barramento } from "../barramento";
 export default {
   components: {
     apexcharts
   },
-  data: () => {
+  data() {
     return {
       options: {
         chart: {
@@ -68,18 +69,22 @@ export default {
   },
 
   methods: {
-    getFazendaPj() {
+    getFazendaPj(e = {}) {
       try {
-        let { series, categories } = serviceFazendasUltilizamPj.getFazendaPj();
+        let { series, categories } = serviceFazendasUltilizamPj.getFazendaPj(e);
         this.series = series;
         this.options.xaxis.categories = categories;
       } catch (error) {
         console.log(error);
       }
+    },
+    onclickSeriesFazendaScor() {
+      barramento.$on("click:seriesFazendaScor", this.getFazendaPj);
     }
   },
 
   created() {
+    this.onclickSeriesFazendaScor();
     this.getFazendaPj();
   }
 };

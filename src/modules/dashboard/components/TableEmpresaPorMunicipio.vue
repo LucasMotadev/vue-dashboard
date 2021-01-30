@@ -46,7 +46,7 @@ export default {
       this.items = tableEmpresaService.getEmpresaPorEstado(obj.id);
     },
     onClickSeriesEmpresaPorEstado() {
-      barramento.$on("clinkSeriresPorEstado", this.getEmpresaPorEstado);
+      barramento.$on("click:seriresPorEstado", this.getEmpresaPorEstado);
     }
   },
   mounted() {

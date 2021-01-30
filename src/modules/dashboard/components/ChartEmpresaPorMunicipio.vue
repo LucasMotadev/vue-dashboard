@@ -17,7 +17,7 @@ export default {
   components: {
     apexcharts
   },
-  data: () => {
+  data() {
     return {
       options: {
         chart: {
@@ -94,9 +94,8 @@ export default {
         console.log(error);
       }
     },
-
     onClickSeriesPorEstado() {
-      barramento.$on("clinkSeriresPorEstado", this.getEmpresaPorEstado);
+      barramento.$on("click:seriresPorEstado", this.getEmpresaPorEstado);
     }
   },
 

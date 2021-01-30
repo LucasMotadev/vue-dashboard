@@ -27,18 +27,13 @@ export default {
   ],
 
   getFazendaScor() {
-    let data = [];
-    let categories = [];
     let series = [];
+    let categories = ["scor"];
     this.items.forEach(item => {
-      categories.push(item.fazenda);
-      data.push(item.scor);
-    });
-
-    series.push({
-      color: "#00FA9A",
-      name: "",
-      data
+      series.push({
+        name: item.fazenda,
+        data: [item.scor]
+      });
     });
 
     return { series, categories };
